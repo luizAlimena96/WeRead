@@ -10,14 +10,14 @@ class PDFMerge:
         self.root = tk.Tk()
         self.root.title('WeRead')
 
-        self.add_button = tk.Button(self.root, text='Add files', command=self.add_button)
+        self.add_button = tk.Button(self.root, text='Adicionar', command=self.add_button)
         self.add_button.pack(pady=10)
 
 
-        self.merge_button = tk.Button(self.root, text='Merge files', command=self.merge_pdf)
+        self.merge_button = tk.Button(self.root, text='Juntar PDF's', command=self.merge_pdf)
         self.merge_button.pack(pady=10)
 
-        self.status_label = tk.Label(self.root, text='No PDFs added')
+        self.status_label = tk.Label(self.root, text='Nao foi adicionado PDF's')
         self.status_label.pack()
 
         self.root.mainloop()
@@ -25,10 +25,10 @@ class PDFMerge:
         pdf_files = filedialog.askopenfilenames(filetypes=[('PDF files', '*.pdf')])
         if pdf_files:
             self.pdf_files.extend(pdf_files)
-            self.status_label.config(text=f'{len(self.pdf_files)} PDFs added')
+            self.status_label.config(text=f'{len(self.pdf_files)} arquivos PDF's adicionados')
     def merge_pdf(self):
         if not self.pdf_files:
-            self.status_label.config(text='No PDFs added')
+            self.status_label.config(text='Nao foram adicionados PDF's')
             return
         self.pdf_files.sort()
         pdf_writer = PyPDF2.PdfFileWriter()
